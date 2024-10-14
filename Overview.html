@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.8.0/styles/default.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.17.2/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.2/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.17.2/dist/index.js"></script><script>(r => {
+                setTimeout(r);
+              })(() => {
+  const {
+    markmap,
+    mm
+  } = window;
+  const {
+    el
+  } = markmap.Toolbar.create(mm);
+  el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+  document.body.append(el);
+})</script><script>((getMarkmap, getOptions, root2, jsonOptions) => {
+              const markmap = getMarkmap();
+              window.mm = markmap.Markmap.create(
+                "svg#mindmap",
+                (getOptions || markmap.deriveOptions)(jsonOptions),
+                root2
+              );
+            })(() => window.markmap,null,{"content":"System Resource Monitor Flask App","children":[{"content":"Table of Contents","children":[{"content":"<a href=\"#prerequisites\">Prerequisites</a>","children":[],"payload":{"lines":"6,7"}},{"content":"<a href=\"#installation\">Installation</a>","children":[],"payload":{"lines":"7,8"}},{"content":"<a href=\"#running-the-app\">Running the App</a>","children":[],"payload":{"lines":"8,9"}},{"content":"<a href=\"#interacting-with-the-app\">Interacting with the App</a>","children":[],"payload":{"lines":"9,10"}},{"content":"<a href=\"#stopping-the-app\">Stopping the App</a>","children":[],"payload":{"lines":"10,11"}},{"content":"<a href=\"#optional-packaging-for-distribution\">Optional: Packaging for Distribution</a>","children":[],"payload":{"lines":"11,12"}},{"content":"<a href=\"#libraries-required\">Libraries Required</a>","children":[],"payload":{"lines":"12,14"}}],"payload":{"lines":"4,5"}},{"content":"Prerequisites","children":[{"content":"<strong>Python 3.6+</strong> installed on your machine.","children":[],"payload":{"lines":"20,21"}},{"content":"Basic knowledge of using the terminal/command prompt.","children":[],"payload":{"lines":"21,23"}}],"payload":{"lines":"16,17"}},{"content":"Installation","children":[{"content":"Step 1: Install Python","children":[{"content":"\n<p data-lines=\"29,30\">Download and install Python from <a href=\"https://www.python.org/downloads/\">python.org</a>. Ensure you select <strong>\"Add Python to PATH\"</strong> during installation.</p>","children":[],"payload":{"lines":"29,31"}},{"content":"\n<p data-lines=\"31,32\">Verify Python installation by running the following command in the terminal (or command prompt):</p>\n<pre><code class=\"language-bash\">python --version\n</code></pre>","children":[],"payload":{"lines":"31,36"}}],"payload":{"lines":"27,28"}},{"content":"Step 2: Clone or Download the Repository","children":[{"content":"Clone this repository to your local machine or download the necessary files:<pre><code class=\"language-bash\">git <span class=\"hljs-built_in\">clone</span> https://github.com/yourusername/system-resource-monitor.git\n</code></pre>","children":[],"payload":{"lines":"38,42"}},{"content":"Change into the directory:<pre><code class=\"language-bash\"><span class=\"hljs-built_in\">cd</span> system-resource-monitor\n</code></pre>","children":[],"payload":{"lines":"42,47"}}],"payload":{"lines":"36,37"}},{"content":"Step 3: Set Up a Virtual Environment (Optional)","children":[{"content":"\n<p data-lines=\"49,50\">Create a virtual environment to isolate the dependencies:</p>\n<pre><code class=\"language-bash\">python -m venv venv\n</code></pre>","children":[],"payload":{"lines":"49,55"}},{"content":"\n<p data-lines=\"55,56\">Activate the virtual environment:</p>","children":[{"content":"On <strong>Windows</strong>:<pre><code class=\"language-bash\">venv\\Scripts\\activate\n</code></pre>","children":[],"payload":{"lines":"56,60"}},{"content":"On <strong>Linux/macOS</strong>:<pre><code class=\"language-bash\"><span class=\"hljs-built_in\">source</span> venv/bin/activate\n</code></pre>","children":[],"payload":{"lines":"60,65"}}],"payload":{"lines":"55,65"}}],"payload":{"lines":"47,48"}},{"content":"Step 4: Install Required Libraries","children":[{"content":"<pre><code class=\"language-bash\">pip install Flask psutil GPUtil\n</code></pre>","children":[]}],"payload":{"lines":"65,66"}}],"payload":{"lines":"25,26"}},{"content":"Running the App","children":[{"content":"\n<p data-lines=\"79,80\">In the terminal or command prompt, run:</p>\n<pre><code class=\"language-bash\">python app.py\n</code></pre>","children":[],"payload":{"lines":"79,85"}},{"content":"\n<p data-lines=\"85,86\">Open your web browser and go to:</p>\n<pre><code data-lines=\"86,89\"><span class=\"hljs-symbol\">http:</span><span class=\"hljs-comment\">//127.0.0.1:5000/</span>\n</code></pre>","children":[],"payload":{"lines":"85,90"}}],"payload":{"lines":"75,76"}},{"content":"Interacting with the App","children":[{"content":"Once the page loads, click the <strong>\"Get System Resources\"</strong> button.","children":[],"payload":{"lines":"94,95"}},{"content":"You will see the system's CPU, memory, disk, and GPU information displayed in a neat table format.","children":[],"payload":{"lines":"95,97"}}],"payload":{"lines":"92,93"}},{"content":"Stopping the App","children":[],"payload":{"lines":"99,100"}},{"content":"Optional: Packaging for Distribution","children":[{"content":"\n<p data-lines=\"109,110\">Install PyInstaller:</p>\n<pre><code class=\"language-bash\">pip install pyinstaller\n</code></pre>","children":[],"payload":{"lines":"109,115"}},{"content":"\n<p data-lines=\"115,116\">Run PyInstaller to create an executable:</p>\n<pre><code class=\"language-bash\">pyinstaller --onefile app.py\n</code></pre>","children":[],"payload":{"lines":"115,120"}}],"payload":{"lines":"105,106"}},{"content":"Libraries Required","children":[{"content":"\n<p data-lines=\"128,129\"><strong>Flask</strong>: For serving the web app. Install via:</p>\n<pre><code class=\"language-bash\">pip install Flask\n</code></pre>","children":[],"payload":{"lines":"128,134"}},{"content":"\n<p data-lines=\"134,135\"><strong>psutil</strong>: For gathering system information like CPU, memory, and disk usage. Install via:</p>\n<pre><code class=\"language-bash\">pip install psutil\n</code></pre>","children":[],"payload":{"lines":"134,140"}},{"content":"\n<p data-lines=\"140,141\"><strong>GPUtil</strong>: For gathering GPU information (if available). Install via:</p>\n<pre><code class=\"language-bash\">pip install GPUtil\n</code></pre>","children":[],"payload":{"lines":"140,145"}}],"payload":{"lines":"124,125"}},{"content":"License","children":[],"payload":{"lines":"147,148"}}],"payload":{"lines":"0,1"}},{})</script>
+</body>
+</html>

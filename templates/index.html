@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System Resource Info</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>System Resource Information</h1>
+      <button onclick="fetchResources()">Get System Resources</button>
+
+      <div id="output"></div>
+    </div>
+
+    <script>
+      function fetchResources() {
+        fetch("/get_resources")
+          .then((response) => response.json())
+          .then((data) => {
+            let output = "<h2>System Information</h2>";
+            output += createTable(data.system_info);
+            output += "<h2>CPU Information</h2>";
+            output += createTable(data.cpu_info);
+            output += "<h2>Memory Information</h2>";
+            output += createTable(data.memory_info);
+            output += "<h2>Disk Information</h2>";
+            output += createTable(data.disk_info);
+            output += "<h2>GPU Information</h2>";
+            output += createTable(data.gpu_info);
+            document.getElementById("output").innerHTML = output;
+          });
+      }
+
+      function createTable(data) {
+        let table = "<table>";
+        data.forEach((row) => {
+          table += "<tr>";
+          row.forEach((cell) => {
+            table += `<td>${cell}</td>`;
+          });
+          table += "</tr>";
+        });
+        table += "</table>";
+        return table;
+      }
+    </script>
+  </body>
+</html>
